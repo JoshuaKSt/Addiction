@@ -24,10 +24,20 @@ git clone https://github.com/ccsb-scripps/AutoDock-Vina
 cd AutoDock-Vina/build/linux/release/
 make
 
-
-
 # Create methadone molecule
+cd
+cd Addiction/Molecular_Models
 python3 Methadone.py
+
+# Run docking simulation to find optimal energy position for Methadone against Mu-opioid receptor and to combine them into one pdb file.
+python3 Docking.py
+
+# (Optional) install PyMOL to visualize .pdb output
+sudo apt-get install pymol
+pymol Output/methadone_simulation_1.pdb
+
+# On the right inside of the PyMOL window you can click the S next to all or the .pdb file name to change how it is displayed. My personal favorite is licorice.
+
 ```
 
 ## Setup Instructions
