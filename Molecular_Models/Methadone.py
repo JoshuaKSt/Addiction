@@ -4,7 +4,7 @@ from rdkit.Chem import Draw
 from rdkit.Chem import AllChem
 import matplotlib.pyplot as plt
 
-output_directory = 'PDB_Nursery'
+output_directory = 'Ligand_Nursery'
 os.makedirs(output_directory, exist_ok=True)
 
 
@@ -51,7 +51,7 @@ plt.imshow(img)
 plt.show()
 
 molecule.SetProp("_Name", "Methadone")
-output_pdb_path = os.path.join(output_directory, 'methadone_lowest_energy.pdb')
+output_pdb_path = os.path.join(output_directory, 'methadone.pdb')
 Chem.MolToPDBFile(molecule, output_pdb_path, confId=lowest_energy_conf)
 
 

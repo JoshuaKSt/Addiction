@@ -4,7 +4,7 @@ from rdkit.Chem import AllChem
 from rdkit.Chem import Draw
 
 pdb = 'PDB_Nursery'
-output_directory = 'Fork_in_the_Road'
+output_directory = '2d_models'
 os.makedirs(output_directory, exist_ok=True)
 
 

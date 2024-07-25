@@ -1,0 +1,40 @@
+file(REMOVE_RECURSE
+  "../../../lib/libcoordgen.pdb"
+  "../../../lib/libcoordgen.so"
+  "../../../lib/libcoordgen.so.3"
+  "../../../lib/libcoordgen.so.3.0.2"
+  ".3"
+  "CMakeFiles/coordgen.dir/CoordgenFragmentBuilder.cpp.o"
+  "CMakeFiles/coordgen.dir/CoordgenFragmentBuilder.cpp.o.d"
+  "CMakeFiles/coordgen.dir/CoordgenFragmenter.cpp.o"
+  "CMakeFiles/coordgen.dir/CoordgenFragmenter.cpp.o.d"
+  "CMakeFiles/coordgen.dir/CoordgenMacrocycleBuilder.cpp.o"
+  "CMakeFiles/coordgen.dir/CoordgenMacrocycleBuilder.cpp.o.d"
+  "CMakeFiles/coordgen.dir/CoordgenMinimizer.cpp.o"
+  "CMakeFiles/coordgen.dir/CoordgenMinimizer.cpp.o.d"
+  "CMakeFiles/coordgen.dir/CoordgenTemplates.cpp.o"
+  "CMakeFiles/coordgen.dir/CoordgenTemplates.cpp.o.d"
+  "CMakeFiles/coordgen.dir/sketcherMinimizer.cpp.o"
+  "CMakeFiles/coordgen.dir/sketcherMinimizer.cpp.o.d"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerAtom.cpp.o"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerAtom.cpp.o.d"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerBond.cpp.o"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerBond.cpp.o.d"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerFragment.cpp.o"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerFragment.cpp.o.d"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerMarchingSquares.cpp.o"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerMarchingSquares.cpp.o.d"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerMolecule.cpp.o"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerMolecule.cpp.o.d"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerResidue.cpp.o"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerResidue.cpp.o.d"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerResidueInteraction.cpp.o"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerResidueInteraction.cpp.o.d"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerRing.cpp.o"
+  "CMakeFiles/coordgen.dir/sketcherMinimizerRing.cpp.o.d"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/coordgen.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()
