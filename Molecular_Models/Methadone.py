@@ -25,9 +25,9 @@ Chem.SanitizeMol(molecule)
 conformers = AllChem.EmbedMultipleConfs(molecule, numConfs=100, params=params)
 
 for confId in conformers:
-        status_MMFF = AllChem.MMFFOptimizeMolecule(molecule, confId=confId, maxIters=5000)
-        if status_MMFF == 0:
-            Optimized_Conformers.append(confId)
+    status_MMFF = AllChem.MMFFOptimizeMolecule(molecule, confId=confId, maxIters=5000)
+    if status_MMFF == 0:
+        Optimized_Conformers.append(confId)
 
 properties = AllChem.MMFFGetMoleculeProperties(molecule)
 
@@ -45,9 +45,12 @@ for confId, energy in Energies:
     print(f"Conformer {confId} energy: {energy}")
 
 lowest_energy_conf = min(Energies, key=lambda x: x[1])[0]
-print(f"{lowest_energy_conf}")
+print(f"Lowest Energy Configuration: {lowest_energy_conf}")
 img = Draw.MolToImage(molecule, confId=lowest_energy_conf)
-plt.imshow(img)
+with open('img_out.png', 'wb') as outfp:
+        img.save(outfp)
+        print('save in file img_out.png')
+        
 plt.show()
 
 molecule.SetProp("_Name", "Methadone")
