@@ -8,10 +8,9 @@ output_dir = 'Output'
 os.makedirs(output_dir, exist_ok=True)
 
 # Define Dependancy Paths
-obabel = "./Dependancies/openbabel-openbabel-3-1-1/build/bin/obabel"
+obabel = "obabel"
 Vina = "./Dependancies/AutoDock-Vina/build/linux/release/vina"
 lib_path = os.path.abspath('./Dependancies')
-babel_libdir = os.path.abspath('./Dependancies/openbabel-openbabel-3-1-1/build/lib')
 Receptor = os.path.join(Mu_dir, "Pruned_8e0g.pdb")
 trash_dir = os.path.join(output_dir, "Trash")
 os.makedirs(trash_dir, exist_ok=True)
@@ -19,9 +18,6 @@ os.makedirs(trash_dir, exist_ok=True)
 # Function using subprocess to run commands
 def runCmd(command):
     env = os.environ.copy()
-    env['LD_LIBRARY_PATH'] = lib_path + ":" + env.get('LD_LIBRARY_PATH', '')
-    env['BABEL_LIBDIR'] = babel_libdir
-    env['BABEL_DATADIR'] = os.path.abspath('/home/o-o/Coding/Molecular_Models/Dependancies/openbabel-openbabel-3-1-1/data')
     print(f"Running command: {command}")
     subprocess.run(command, shell=True, check=True, env=env)
 
