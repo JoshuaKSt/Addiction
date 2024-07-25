@@ -2,7 +2,33 @@
 
 ## Overview
 
-This project takes a methadone ligand and binds it against the mu-opioid receptor. The AutoDock vina simulation script is being made to run with any ligand and receptor pdb file.
+This project takes a methadone ligand and binds it against the mu-opioid receptor. The Docking simulation uses AutoDock Vina.
+
+## Installation
+
+
+```bash
+# Clone the repository:
+git clone https://github.com/JoshuaKSt/Addiction
+
+# Enter Dependancies directory
+cd Addiction/Molecular_Models/Dependancies
+
+# Install dependancies
+pip install rdkit matplotlib
+sudo apt-get update
+sudo apt-get install libboost-all-dev
+git clone https://github.com/ccsb-scripps/AutoDock-Vina
+
+# Make AutoDock-Vina
+cd AutoDock-Vina/build/linux/release/
+make
+
+
+
+# Create methadone molecule
+python3 Methadone.py
+```
 
 ## Setup Instructions
 
