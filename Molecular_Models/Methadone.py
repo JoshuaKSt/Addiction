@@ -53,7 +53,7 @@ print(f"Lowest Energy Configuration: {lowest_energy_conf}")
 img = Draw.MolToImage(molecule, confId=lowest_energy_conf)
 with open(img_path, 'wb') as outfp:
         img.save(outfp)
-        print('save in file img_out.png')
+        print('saved in file Methadone_Overlay.png within ./Output/Additional_Models')
         
 plt.show()
 
