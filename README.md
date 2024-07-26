@@ -56,20 +56,24 @@ pymol Output/methadone_simulation_1.pdb
 
 ```
 
+## Files
+
+- **'Chirality.py'**: Simple script that assigns stereochemistry and chiral centers to the input pdb. Outputs: the chiral atom type, whether there is an 'R' or 'S' configuration of the chiral center(s).
+  
+- **'Methadone.py'**: Uses RDKit's SMILES to create a methadone molecule and creates conformers to attempt and optimize the molecules energy.
+  
+- **'Docking.py'**: Uses Obabel to convert file types and AutoDock-Vina to dock the input ligands against the input receptors. Final output is a .pdb combining these inputs.
+  
+- **'ReceptorPruning.py'**: Directly edits the .pdb file of Receptor_Nursery contents to look for and remove the specified ligand.
+  
+- **'MethadoneEnergyHistogram'**: Creates a histogram of methadone energy conformations seperate from the result of methadone.py. Due to the current nature of my conformers optimization, this program is mostly useless due to conformer 47 being the most optimized methadone molecule under my current code.
+
 ## Setup Instructions
 
 1. **Find Ligand**: To run a test simulation you can simply use the included 'Methadone.py' script to create a methadone ligand using RDKit. To see the molecules Chirality you can use 'Chirality.py' 
-Other ligands can easily be found in databases such as: [wip]
+Other ligands can easily be found in databases such as: https://go.drugbank.com/ or https://www.rcsb.org/
 
 2. **Find Receptor**: My test structure is 8E0G from: https://www.rcsb.org/
 | The script 'ReceptorPruning.py' can be used to deal with simple structural errors or conflicts. 
 
-3. **Run docking simulation**: Running Docking.py will dock every ligand within the directory 'Ligand_Nursery' against every receptor in [wip]. The outputs will be placed in the output folder as a .pdb
-These can be viewed using a simple molecular viewer such as the included [wip]
-
-
-## 
-
-Due to the current nature of my conformers optimization this program is mostly useless.
-
-
+3. **Run docking simulation**: Running Docking.py will dock every ligand within the directory 'Ligand_Nursery' against every receptor in 'Receptor_Nursery'. The outputs will be placed in the output folder as a .pdb. These can be viewed using a simple molecular viewer such as PyMOL
