@@ -22,6 +22,4 @@ img = Draw.MolToImage(mol, size=(300, 300), kekulize=True)
 img_filename = os.path.join(output_directory, f"{os.path.splitext(filename)[0]}_angled_overlay.png")
 img.save(img_filename)
 	
-print("+"*50 + "\n")
-	
 
