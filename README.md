@@ -1,4 +1,4 @@
-# Ligands and Receptors- A Love Story
+# Ligands and Receptors: A Love Story
 
 ## Overview
 
