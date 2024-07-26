@@ -4,8 +4,12 @@ from rdkit.Chem import Draw
 from rdkit.Chem import AllChem
 import matplotlib.pyplot as plt
 
+Graph_dir = 'Output/Additional_Models'
 output_directory = 'Ligand_Nursery'
 os.makedirs(output_directory, exist_ok=True)
+os.makedirs(Graph_dir, exist_ok=True)
+
+img_path = os.path.join(Graph_dir, 'Methadone_Overlay.png')
 
 
 Optimized_Conformers = []
@@ -47,7 +51,7 @@ for confId, energy in Energies:
 lowest_energy_conf = min(Energies, key=lambda x: x[1])[0]
 print(f"Lowest Energy Configuration: {lowest_energy_conf}")
 img = Draw.MolToImage(molecule, confId=lowest_energy_conf)
-with open('img_out.png', 'wb') as outfp:
+with open(img_path, 'wb') as outfp:
         img.save(outfp)
         print('save in file img_out.png')
         
