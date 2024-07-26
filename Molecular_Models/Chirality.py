@@ -3,8 +3,8 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 from rdkit.Chem import Draw
 
-pdb = 'PDB_Nursery'
-output_directory = '2d_models'
+pdb = 'Ligand_Nursery'
+output_directory = 'Output/Additional_Models'
 os.makedirs(output_directory, exist_ok=True)
 
 
@@ -19,7 +19,7 @@ for filename in os.listdir(pdb):
         print(f"\nMolecule: {filename}: {chiral_centers}")
 	
 img = Draw.MolToImage(mol, size=(300, 300), kekulize=True)
-img_filename = os.path.join(output_directory, f"{os.path.splitext(filename)[0]}_chirality.png")
+img_filename = os.path.join(output_directory, f"{os.path.splitext(filename)[0]}_angled_overlay.png")
 img.save(img_filename)
 	
 print("+"*50 + "\n")
