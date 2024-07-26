@@ -8,9 +8,8 @@ output_dir = 'Output'
 os.makedirs(output_dir, exist_ok=True)
 
 # Define Dependancy Paths
-obabel = "./Dependancies/openbabel-openbabel-3-1-1/build/lib/libopenbabel.so.7"
+obabel = "obabel"
 Vina = "./Dependancies/AutoDock-Vina/build/linux/release/vina"
-lib_path = os.path.abspath('./Dependancies')
 trash_dir = os.path.join(output_dir, "Trash")
 os.makedirs(trash_dir, exist_ok=True)
 
