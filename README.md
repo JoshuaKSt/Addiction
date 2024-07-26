@@ -16,7 +16,7 @@ cd Addiction/Molecular_Models/Dependancies
 
 # Install dependancies
 sudo apt-get update
-sudo apt-get install libboost-all-dev make g++ pip
+sudo apt-get install libboost-all-dev make g++ pip obabel
 pip install rdkit matplotlib
 git clone https://github.com/ccsb-scripps/AutoDock-Vina # inside the repositories Dependancies directory install AutoDock-Vina
 
