@@ -3,15 +3,14 @@ import subprocess
 
 # Define Directories
 Ligand_dir = 'Ligand_Nursery'
-Mu_dir = 'muReceptor'
+Mu_dir = 'Receptor_Nursery'
 output_dir = 'Output'
 os.makedirs(output_dir, exist_ok=True)
 
 # Define Dependancy Paths
-obabel = "obabel"
+obabel = "./Dependancies/openbabel-openbabel-3-1-1/build/lib/libopenbabel.so.7"
 Vina = "./Dependancies/AutoDock-Vina/build/linux/release/vina"
 lib_path = os.path.abspath('./Dependancies')
-Receptor = os.path.join(Mu_dir, "Pruned_8e0g.pdb")
 trash_dir = os.path.join(output_dir, "Trash")
 os.makedirs(trash_dir, exist_ok=True)
 
@@ -49,16 +48,23 @@ def merger(Mprep_out, receptor2, Finale):
                 for line in infile:
                     outfile.write(line)
 
+# Function to find specifically named files within Receptor_Nursery
+def find_pruned():
+    for file in os.listdir(Mu_dir):
+        if file.startswith("Pruned") and file.endswith(".pdb"):
+            return file
+            Receptor = find_pruned()
 
-def fileConversion(rawr):
+def fileConversion(rawr, Receptor):
     okay = os.path.splitext(os.path.basename(rawr))[0]
     ligand_inp = os.path.join(Ligand_dir, f"{rawr}")
     ligand2 = os.path.join(trash_dir, f"{okay}_ligand.pdbqt")
     temp_intermediary = os.path.join(trash_dir, f"{okay}_ligand_intermediary.pdb") 
-    receptor2 = os.path.join(trash_dir, "Pruned_8e0g.pdbqt")
-    Receptor_intermediary = os.path.join(trash_dir, "Pruned_8e0g_intermediary.pdb")
-    
-    agua(Receptor, Receptor_intermediary)
+    receptor2 = os.path.join(trash_dir, f"{os.path.splitext(Receptor)[0]}.pdbqt")
+    Receptor_intermediary = os.path.join(trash_dir, f"{os.path.splitext(Receptor)[0]}_intermediary.pdb")
+
+    Recep_path = os.path.join(Mu_dir, Receptor)
+    agua(Recep_path, Receptor_intermediary)
     agua(ligand_inp, temp_intermediary)
     Convert(temp_intermediary, ligand2)
     ConvertRigid(Receptor_intermediary, receptor2)
@@ -108,17 +114,19 @@ def vina(ligand2, receptor2, outname):
 
 
 def Simulate():
-    for index, filename in enumerate(os.listdir(Ligand_dir)):
-        if filename.endswith('.pdb'):
-            rawr = os.path.abspath(os.path.join(Ligand_dir, filename))
-            name = os.path.splitext(filename)[0]
-            outname = f"{name}_ligand_{index + 1}"
-            Mprep_out = os.path.join(f"{trash_dir}","temporary.pdb")
-            Finale = os.path.join(output_dir, f"{name}_simulation_{index + 1}.pdb")
+    Recep_file = find_pruned()
+    if Recep_file:
+        for index, filename in enumerate(os.listdir(Ligand_dir)):
+            if filename.endswith('.pdb'):
+                rawr = os.path.abspath(os.path.join(Ligand_dir, filename))
+                name = os.path.splitext(filename)[0]
+                outname = f"{name}_ligand_{index + 1}"
+                Mprep_out = os.path.join(f"{trash_dir}","temporary.pdb")
+                Finale = os.path.join(output_dir, f"{name}_simulation_{index + 1}.pdb")
 
-            ligand2, receptor2 = fileConversion(rawr)
-            vina(ligand2, receptor2, outname)
-            merge_prep(f"Output/{outname}/{outname}_out.pdbqt", Mprep_out)
-            merger(Mprep_out, receptor2, Finale)
+                ligand2, receptor2 = fileConversion(rawr, Recep_file)
+                vina(ligand2, receptor2, outname)
+                merge_prep(f"Output/{outname}/{outname}_out.pdbqt", Mprep_out)
+                merger(Mprep_out, receptor2, Finale)
 
 Simulate()
