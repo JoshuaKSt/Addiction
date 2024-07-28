@@ -29,7 +29,7 @@ cd
 cd Addiction/Molecular_Models
 python3 Methadone.py # This should finish in around 30 seconds
 
-# Run Chirality.py to determine the molecules chirality and generate some simple graphs in the dir /Output/Additional_Models
+# Run Chirality.py to determine the molecules chirality and generate a simple graphs in the dir /Output/Additional_Models
 python3 Chirality.py
 
 # Prune Receptor (If using the included receptor- skip to running the docking simulation.)
