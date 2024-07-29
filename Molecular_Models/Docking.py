@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import os
 import subprocess
 
@@ -54,6 +55,7 @@ def find_pruned():
             return file
             Receptor = find_pruned()
 
+# Function to convert given .pdb files into necessary file types and place them in directories
 def fileConversion(rawr, Receptor):
     okay = os.path.splitext(os.path.basename(rawr))[0]
     ligand_inp = os.path.join(Ligand_dir, f"{rawr}")
@@ -69,6 +71,7 @@ def fileConversion(rawr, Receptor):
     ConvertRigid(Receptor_intermediary, receptor2)
     return ligand2, receptor2
 
+# Function for using AutoDock-Vina
 def vina(ligand2, receptor2, outname):
     os.makedirs(f"Output/{outname}", exist_ok=True)
     outpath = f"Output/{outname}" 
@@ -105,13 +108,21 @@ def vina(ligand2, receptor2, outname):
         f.write(f"size_x = {size_x}\nsize_y = {size_y}\nsize_z = {size_z}\n")
 
     os.makedirs(output_dir, exist_ok=True)
-
-
-
     command = f"{Vina} --config {config_file} --out {out_file}"
     runCmd(command)
+    return out_file
 
+# Function for extracting binding affinities from vinas output
+def extractAffinity(vina_output_file):
+    with open(vina_output_file, 'r') as file:
+        for line in file:
+            if line.strip().startswith("REMARK VINA RESULT:"):
+                affinity = float(line.split()[3])
+                return affinity
 
+def energy_diagram(results)
+
+# Simulation function
 def Simulate():
     Recep_file = find_pruned()
     if Recep_file:
@@ -124,8 +135,10 @@ def Simulate():
                 Finale = os.path.join(output_dir, f"{name}_simulation_{index + 1}.pdb")
 
                 ligand2, receptor2 = fileConversion(rawr, Recep_file)
-                vina(ligand2, receptor2, outname)
+                vina_output = vina(ligand2, receptor2, outname)
                 merge_prep(f"Output/{outname}/{outname}_out.pdbqt", Mprep_out)
                 merger(Mprep_out, receptor2, Finale)
+                affinity = extractAffinity(vina_output)
+                print(f"Binding affinity for {filename}: {affinity} kcal/mol")
 
 Simulate()
