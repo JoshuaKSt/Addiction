@@ -76,28 +76,28 @@ def vina(ligand2, receptor2, outname):
     out_file = os.path.join(f"Output/Trash/{outname}", f"{outname}_out.pdbqt")
     config_file = os.path.join(outpath, f"{outname}_config.txt")
 
-    default_center_x = 0.6710000038146973
-    default_center_y = 16.836999893188477
-    default_center_z = -60.97999954223633
+    default_center_x = 119.535
+    default_center_y = 144.590 
+    default_center_z = 132.454
     default_size_x = 30
     default_size_y = 30
     default_size_z = 30
 
-    center_x = input(f"Enter X coordinate (leave blank for default X center: {default_center_x}): ")
-    center_y = input(f"Enter Y coordinate (leave blank for default Y center: {default_center_y}): ")
-    center_z = input(f"Enter Z coordinate (leave blank for default Z center: {default_center_z}): ")
+    #center_x = input(f"Enter X coordinate (leave blank for default X center: {default_center_x}): ")
+    #center_y = input(f"Enter Y coordinate (leave blank for default Y center: {default_center_y}): ")
+    #center_z = input(f"Enter Z coordinate (leave blank for default Z center: {default_center_z}): ")
     
-    center_x = float(center_x) if center_x else default_center_x
-    center_y = float(center_y) if center_y else default_center_y
-    center_z = float(center_z) if center_z else default_center_z
+    center_x = default_center_x
+    center_y = default_center_y
+    center_z = default_center_z
 
-    size_x = input(f"Enter molecules X size (leave blank for default X size: {default_size_x}): ")
-    size_y = input(f"Enter molecules Y size (leave blank for default Y size: {default_size_y}): ")
-    size_z = input(f"Enter molecules Z size (leave blank for default Z size: {default_size_z}): ")
+    #size_x = input(f"Enter molecules X size (leave blank for default X size: {default_size_x}): ")
+    #size_y = input(f"Enter molecules Y size (leave blank for default Y size: {default_size_y}): ")
+    #size_z = input(f"Enter molecules Z size (leave blank for default Z size: {default_size_z}): ")
 
-    size_x = float(size_x) if size_x else default_size_x
-    size_y = float(size_y) if size_y else default_size_y
-    size_z = float(size_z) if size_z else default_size_z
+    size_x = default_size_x
+    size_y = default_size_y
+    size_z = default_size_z
 
     with open(config_file, 'w') as f:
             f.write(f"receptor = {receptor2}\n")
@@ -123,11 +123,14 @@ def plotAffinities(affinities, receptor_name):
     values = list(affinities.values())
 
     plt.figure(figsize=(10, 6))
-    plt.bar(ligands, values, color='skyblue')
+    best_green = '#40826D'
+    bars = plt.bar(ligands, values, color=best_green)
     plt.xlabel('Ligands')
     plt.ylabel('Binding Affinity (kcal/mol)')
     plt.title(f'Binding Affinities of Ligands to {receptor_name}')
-    plt.xticks(rotation=945, ha='right')
+    plt.xticks(rotation=50, ha='right')
+    for bar, value in zip(bars, values):
+        plt.text(bar.get_x() + bar.get_width() / 2, bar.get_height() - 0.5, f'{value:.2f}', ha='center', va='bottom')
     plt.tight_layout()
     plt.savefig(os.path.join(f"{output_dir}/Additional_Models", f"{receptor_name}_affinities.png"))
     plt.show()

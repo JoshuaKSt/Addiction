@@ -17,5 +17,4 @@ for filename in os.listdir(cd):
     if filename.endswith('.pdb'):
         input_file = os.path.join(cd, filename)
         output_file = os.path.join(cd, f"Pruned_{filename}")
-    
-wardrobe(input_file, output_file, Ligand)
+        wardrobe(input_file, output_file, Ligand)

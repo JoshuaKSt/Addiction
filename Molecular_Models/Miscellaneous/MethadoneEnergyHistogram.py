@@ -1,6 +1,7 @@
 from rdkit import Chem
 from rdkit.Chem import Draw
 from rdkit.Chem import AllChem
+import matplotlib; matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 Optimized_Conformers = []
@@ -31,18 +32,19 @@ for confId in Optimized_Conformers:
     if status_UFF == 0:
         forcefield_UFF = AllChem.UFFGetMoleculeForceField(molecule, confId=confId)
         energy = forcefield_UFF.CalcEnergy()
-        Energies.append((energy))
+        Energies.append((confId, energy))
 
-   # Judge = 30
-    #low_energy_conformers = [confId for confId, energy in Energies if energy < Judge]
 
-for energy in Energies:
+for confId, energy in Energies:
     print(f"Conformer {confId} energy: {energy}")
 
+energy_values = [energy for confId, energy in Energies]
+Counter = len(energy_values)
 
-
-plt.hist(Energies, bins=50)
+plt.figure()
+plt.hist(energy_values, bins=50, edgecolor='black', color='aquamarine')
 plt.xlabel('Energy')
 plt.ylabel('Frequency')
-plt.title('Energy Distribution of Methadone Conformers')
-plt.show()
+plt.title(f'Energy Distribution of {Counter} Methadone Conformers')
+output_path = 'Methadone_Energy_Histogram.png'
+plt.savefig(output_path)
