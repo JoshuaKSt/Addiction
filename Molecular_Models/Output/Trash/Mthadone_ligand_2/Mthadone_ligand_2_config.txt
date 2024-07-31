@@ -1,0 +1,8 @@
+receptor = Output/Trash/Pruned_8e0g.pdbqt
+ligand = Output/Trash/Mthadone_ligand.pdbqt
+center_x = 0.6710000038146973
+center_y = 16.836999893188477
+center_z = -60.97999954223633
+size_x = 30
+size_y = 30
+size_z = 30

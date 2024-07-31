@@ -1,0 +1,8 @@
+receptor = Output/Trash/Pruned_8k9k_receptor.pdbqt
+ligand = Output/Trash/HeroinMOL_ligand.pdbqt
+center_x = 121.85399627685547
+center_y = 119.45800018310547
+center_z = 90.16999816894531
+size_x = 30
+size_y = 30
+size_z = 30

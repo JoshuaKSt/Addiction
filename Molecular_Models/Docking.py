@@ -76,9 +76,9 @@ def vina(ligand2, receptor2, outname):
     out_file = os.path.join(f"Output/Trash/{outname}", f"{outname}_out.pdbqt")
     config_file = os.path.join(outpath, f"{outname}_config.txt")
 
-    default_center_x = 119.535
-    default_center_y = 144.590 
-    default_center_z = 132.454
+    default_center_x = 121.85399627685547
+    default_center_y = 119.45800018310547 
+    default_center_z = 90.16999816894531
     default_size_x = 30
     default_size_y = 30
     default_size_z = 30
