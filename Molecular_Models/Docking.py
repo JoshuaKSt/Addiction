@@ -10,7 +10,7 @@ os.makedirs(output_dir, exist_ok=True)
 
 # Define Dependancy Paths
 obabel = "obabel"
-Vina = "./Dependancies/AutoDock-Vina/build/linux/release/vina"
+Vina = "./Dependencies/AutoDock-Vina/build/linux/release/vina"
 trash_dir = os.path.join(output_dir, "Trash")
 os.makedirs(trash_dir, exist_ok=True)
 
