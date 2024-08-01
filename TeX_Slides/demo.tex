@@ -1,9 +1,10 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 
 \usetheme{simple}
 
 \usepackage{lmodern}
 \usepackage[scale=2]{ccicons}
+\centering
 
 % TODO: 
 %   position adjustement
@@ -11,6 +12,7 @@
 %       
 
 % Watermark background (simple theme)
+
 
 \setwatermark{\includegraphics[height=8cm]{img/Methadone_Overlay.png}}
 
@@ -95,12 +97,14 @@
 \begin{frame}{What are: "Binding Affinities"?}
   \framesubtitle{}
 
-  \texttt They are:
+\begin{flushleft}
+ \texttt They are:
+\end{flushleft}
 
   \begin{columns}
     \column{.5\textwidth}
       \begin{itemize}
-        \item How tightly bound an interaction is (i.e. a ligand and protein) 
+        \item How tightly bound an interaction is \\(i.e. a ligand and protein) 
         \item Often referred to as the free energy of binding ($\Delta G$)
         \item Used in drug optimization, computations of biological systems etc.
       \end{itemize}
@@ -155,11 +159,10 @@
 \begin{frame}{Affinity Graphs}
 \includegraphics[width=12cm]{img/Graphs/Pruned_8e0g_affinities.png}
 \end{frame}
-\setwatermark{\includegraphics[width=1cm]{img/FentanylSDF_Overlay.png}}
+
 \begin{frame}{Affinity Graphs}
 \includegraphics[width=12cm]{img/Graphs/Pruned_8k9k_receptor_affinities.png}
 \end{frame}
-\setwatermark{\includegraphics[width=1cm]{img/FentanylSDF_Overlay.png}}
 \begin{frame}{Affinity Graphs}
 \includegraphics[width=12cm]{img/Graphs/Pruned_6DDF_affinities.png}
 \end{frame}
