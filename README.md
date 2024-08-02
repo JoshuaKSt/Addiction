@@ -54,6 +54,8 @@ python3 ReceptorPruning.py
 # then combines them into one pdb file.
 python3 Docking.py
 
+# After this it is recommended to go into /Output/Additional_Models to see graphs | Depending on which scripts were run, one or many more graphs are located in /Ligand_Nursery/Ligand_Models
+
 # (Optional) install PyMOL to visualize .pdb output
 sudo apt-get install pymol
 pymol Output/methadone_simulation_1.pdb
