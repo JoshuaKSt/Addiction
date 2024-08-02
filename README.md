@@ -2,8 +2,13 @@
 
 ## Overview
 
-This project takes a variety of ligands and binds them against the provided receptor. The Docking simulation uses AutoDock Vina. This was originally developed for the mu-opioid receptor and opioids although it should work with any receptor and ligand assuming the users ability to manipulate .pdb files etc.
+This project takes a variety of ligands and binds them against the provided receptor. This was originally developed for the mu-opioid receptor and opioids, although it will work with any receptor and ligand assuming the users ability to manipulate .pdb files etc. into desired arrangement for docking.
+
 The Research-Affinity branch is where my opioid project is located. The master branch is made to be used with the section below, "Setup and Tutorial" and can be followed by a complete beginner.
+
+AutoDock-Vina used for docking simulation
+RDKit used for molecule creation and optimization
+Obabel used for file conversion
 
 ## Setup and Tutorial
 
@@ -85,3 +90,5 @@ Other ligands can easily be found in databases such as: https://go.drugbank.com/
 | The script 'ReceptorPruning.py' can be used to deal with simple structural errors or conflicts. 
 
 3. **Run docking simulation**: Running Docking.py will dock every ligand within the directory 'Ligand_Nursery' against every receptor in 'Receptor_Nursery'. The outputs will be placed in the output folder as a .pdb. These can be viewed using a simple molecular viewer such as PyMOL
+
+Have a wonderful day.
