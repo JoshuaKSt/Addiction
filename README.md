@@ -2,10 +2,12 @@
 
 ## Overview
 
-This project takes a methadone ligand and binds it against the mu-opioid receptor. The Docking simulation uses AutoDock Vina.
+This project takes a variety of ligands and binds them against the provided receptor. The Docking simulation uses AutoDock Vina. This was originally developed for the mu-opioid receptor and opioids although it should work with any receptor and ligand assuming the users ability to manipulate .pdb files etc.
+The Research-Affinity branch is where my opioid project is located. The master branch is made to be used with the section below, "Setup and Tutorial" and can be followed by a complete beginner.
 
-## Workflow
+## Setup and Tutorial
 
+In terminal:
 
 ```bash
 # Clone the repository:
@@ -58,17 +60,23 @@ pymol Output/methadone_simulation_1.pdb
 
 ## Files
 
-- **'Chirality.py'**: Simple script that assigns stereochemistry and chiral centers to the input pdb. Outputs: the chiral atom type, whether there is an 'R' or 'S' configuration of the chiral center(s).
+- **'Chirality.py'**: located in /Molecular_Models, Simple script that assigns stereochemistry and chiral centers to the input pdb. Outputs: the chiral atom type, whether there is an 'R' or 'S' configuration of the chiral center(s).
   
-- **'Methadone.py'**: Uses RDKit's SMILES to create a methadone molecule and creates conformers to attempt and optimize the molecules energy.
+- **'Methadone.py'**: located in /Molecular_Models, Uses RDKit's SMILES to create a methadone molecule and creates conformers to attempt and optimize the molecules energy.
   
-- **'Docking.py'**: Uses Obabel to convert file types and AutoDock-Vina to dock the input ligands against the input receptors. Final output is a .pdb combining these inputs.
+- **'Docking.py'**: located in /Molecular_Models, Uses Obabel to convert file types and AutoDock-Vina to dock the input ligands against the input receptors. Final output is a .pdb combining these inputs.
   
-- **'ReceptorPruning.py'**: Directly edits the .pdb file of Receptor_Nursery contents to look for and remove the specified ligand.
-  
-- **'MethadoneEnergyHistogram'**: Creates a histogram of methadone energy conformations seperate from the result of methadone.py. Due to the current nature of my conformers optimization, this program is mostly useless due to conformer 47 being the most optimized methadone molecule under my current code.
+- **'ReceptorPruning.py'**: located in /Receptor_Nursery, Directly edits the .pdb file of Receptor_Nursery contents to look for and remove the specified ligand.
 
-## Setup Instructions
+- **'ReceptorExtraction'**: located in /Receptor_Nursery, Directly edits .pdb file specified in code to look for and export given chain Id into a seperate .pdb file.
+
+- **'LigandExtraction'**: located in /Receptor_Nursery, Directly edits .pdb file specified in code to look for and export given ligand residue name into a seperate .pdb file.
+
+- **'MethadoneEnergyHistogram.py'**: located in /Receptor_Nursery/Miscellaneous, Creates a histogram of methadone energy conformations seperate from the result of methadone.py. Due to the current nature of my conformers optimization, this program is mostly useless due to conformer 47 being the most optimized methadone molecule under my current code.
+
+- **'MethadoneEnergyHistogram.py'**: located in /Molecular_Models/Ligand_Nursery, Script made to optimize .mol and .sdf files in /SDF_MOL and convert them into .pdb for docking simulation | drugbank is great to find .mol and .sdf files
+
+## Simple Setup Instructions
 
 1. **Find Ligand**: To run a test simulation you can simply use the included 'Methadone.py' script to create a methadone ligand using RDKit. To see the molecules Chirality you can use 'Chirality.py' 
 Other ligands can easily be found in databases such as: https://go.drugbank.com/ or https://www.rcsb.org/
